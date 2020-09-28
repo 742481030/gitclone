@@ -17,6 +17,12 @@ class gitclone{
 
  
 
-array_shift($argv);
+$arg=array_shift($argv);
 
+
+
+if (!isset($argv[0])){
+echo "使用方法 gitclone 地址 代替 git clone 地址\n";
+    exit;
+}
     @call_user_func_array(['gitclone', 'clone'], $argv);
