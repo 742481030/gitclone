@@ -3,7 +3,7 @@
 url=${1}
 start_time=$(date +%s)
 repo=${url/github.com/github.com.cnpmjs.org}
-echo "从镜像git cloe"
+echo "从镜像git clone"
 git clone ${repo}
 end_time=$(date +%s)
 cost_time=$[ $end_time-$start_time ]
