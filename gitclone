@@ -1,28 +1,10 @@
-#!/usr/bin/env php
-<?php
-class gitclone{
+#!/usr/bin/env bash
 
- public static function clone($a)
-{
-
-
-    
- $b= str_replace("https://github.com","https://github.com.cnpmjs.org",$a);
- echo "正在从代理clone文件".$b."\n";
- passthru( "git clone ".$b);
-}
-
-
-}
-
- 
-
-$arg=array_shift($argv);
-
-
-
-if (!isset($argv[0])){
-echo "使用方法 gitclone 地址 代替 git clone 地址\n";
-    exit;
-}
-    @call_user_func_array(['gitclone', 'clone'], $argv);
+url=${1}
+start_time=$(date +%s)
+repo=${url/github.com/github.com.cnpmjs.org}
+echo "从镜像git cloe"
+git clone ${repo}
+end_time=$(date +%s)
+cost_time=$[ $end_time-$start_time ]
+echo "gitclone 执行时间 $(($cost_time/60))min $(($cost_time%60))s"
